@@ -1,0 +1,16 @@
+server:
+ servelet:
+  context-path: /pessoas/api
+  
+spring:
+ data:
+  mongodb:
+   authentication-database: admin
+   uri: ${MONGO_DB_URI:mongodb+srv://tammyrigoti:e1dkKA6wQaHHay34@cluster0.bacfzeo.mongodb.net/Cluster0?retryWrites=true&w=majority}
+   auto-index-creation: true
+
+  
+  
+  
+  
+ 
