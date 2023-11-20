@@ -13,7 +13,7 @@ public class PessoasApplication {
 
 	@GetMapping
 	public String getHomeTest() {
-		return "Cliente Pet - API Home";
+		return "Pessoas - API Home";
 	}
 
 	public static void main(String[] args) {
