@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.attornatus.pessoas.credencial.application.api.PessoaRequest;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,10 +40,10 @@ public class Pessoa {
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoradaUltimaAlteracao;
 
-	public Pessoa(@NotBlank String nomeCompleto, @NotBlank LocalDate dataDeNascimento, @NotBlank Endereco endereco) {
-		this.nomeCompleto = nomeCompleto;
-		this.dataDeNascimento = dataDeNascimento;
-		this.endereco = endereco;
+	public Pessoa(PessoaRequest pessoaRequest) {
+		this.nomeCompleto = pessoaRequest.getNomeCompleto();
+		this.dataDeNascimento = pessoaRequest.getDataDeNascimento();
+		this.endereco = pessoaRequest.getEndereco();
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
 }
