@@ -22,7 +22,6 @@ public class PessoaApplicationService implements PessoaService {
 		log.info("[inicia] PessoaApplicationService - criaPessoa");
 		Pessoa pessoa = pessoaRepository.salva(new Pessoa(pessoaRequest));
 		log.info("[finaliza] PessoaApplicationService - criaPessoa");
-
 		return PessoaResponse.builder()
 				.idPessoa(pessoa.getIdPessoa())
 				.build();
