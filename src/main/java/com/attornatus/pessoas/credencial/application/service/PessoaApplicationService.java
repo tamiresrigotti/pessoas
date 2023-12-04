@@ -1,7 +1,10 @@
 package com.attornatus.pessoas.credencial.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.attornatus.pessoas.credencial.application.api.PessoaListResponse;
 import com.attornatus.pessoas.credencial.application.api.PessoaRequest;
 import com.attornatus.pessoas.credencial.application.api.PessoaResponse;
 import com.attornatus.pessoas.credencial.application.repository.PessoaRepository;
@@ -25,6 +28,13 @@ public class PessoaApplicationService implements PessoaService {
 		return PessoaResponse.builder()
 				.idPessoa(pessoa.getIdPessoa())
 				.build();
+	}
+
+	@Override
+	public List<PessoaListResponse> buscaTodasPessoas() {
+		log.info("[inicia] PessoaApplicationService - buscaTodasPessoas");
+		log.info("[finaliza] PessoaApplicationService - buscaTodasPessoas");
+		return null;
 	}
 
 }
