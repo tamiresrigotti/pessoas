@@ -1,5 +1,7 @@
 package com.attornatus.pessoas.credencial.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.attornatus.pessoas.credencial.application.repository.PessoaRepository;
@@ -21,5 +23,13 @@ public class PessoaInfraRepository implements PessoaRepository {
 		pessoaSprintDataJPARepository.save(pessoa);
 		log.info("[finaliza] PessoaInfraRepository - salva");
 		return pessoa;
+	}
+
+	@Override
+	public List<Pessoa> buscaTodasPessoas() {
+		log.info("[inicia] PessoaInfraRepository - buscaTodasPessoas");
+		List<Pessoa> todasPessoas = pessoaSprintDataJPARepository.findAll();
+		log.info("[finaliza] PessoaInfraRepository - buscaTodasPessoas");
+		return todasPessoas;
 	}
 }
