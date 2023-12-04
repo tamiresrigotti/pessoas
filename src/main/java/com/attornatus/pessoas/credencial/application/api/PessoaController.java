@@ -1,5 +1,7 @@
 package com.attornatus.pessoas.credencial.application.api;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.attornatus.pessoas.credencial.application.service.PessoaService;
@@ -20,6 +22,13 @@ public class PessoaController implements PessoaAPI {
 		PessoaResponse pessoaCriada = pessoaService.criaPessoa(pessoaRequest);
 		log.info("[finaliza] PessoaController - postPessoa");
 		return pessoaCriada;
+	}
+
+	@Override
+	public List<PessoaListResponse> getTodasPessoas() {
+		log.info("[inicia] PessoaController - getTodasPessoas");
+		log.info("[finaliza] PessoaController - getTodasPessoas");
+		return null;
 	}
 
 }
