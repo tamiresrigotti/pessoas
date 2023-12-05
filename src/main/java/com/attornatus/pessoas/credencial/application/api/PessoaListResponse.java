@@ -3,24 +3,32 @@ package com.attornatus.pessoas.credencial.application.api;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.data.annotation.Id;
+import java.util.stream.Collectors;
 
 import com.attornatus.pessoas.pessoa.domain.Endereco;
 import com.attornatus.pessoas.pessoa.domain.Pessoa;
 
+import lombok.Value;
+
+@Value
 public class PessoaListResponse {
 
-    private UUID idPessoa;
-    private String nomeCompleto;
-    private LocalDate dataDeNascimento;
-    private Endereco endereco;
-    
-public static List<PessoaListResponse> converte(List<Pessoa> pessoas) {
-		// TODO Auto-generated method stub
-		return null;
+	private UUID idPessoa;
+	private String nomeCompleto;
+	private LocalDate dataDeNascimento;
+	private Endereco endereco;
+
+	public static List<PessoaListResponse> converte(List<Pessoa> pessoas) {
+		return pessoas.stream()
+				.map(PessoaListResponse::new)
+				.collect(Collectors.toList());
 	}
+
+	private PessoaListResponse(Pessoa pessoa) {
+		this.idPessoa = pessoa.getIdPessoa();
+		this.nomeCompleto = pessoa.getNomeCompleto();
+		this.dataDeNascimento = pessoa.getDataDeNascimento();
+		this.endereco = pessoa.getEndereco();
+	}
+
 }
