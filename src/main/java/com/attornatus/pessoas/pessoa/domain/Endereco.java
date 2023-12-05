@@ -9,6 +9,8 @@ public class Endereco {
 	@NotBlank
 	private String numero;
 	@NotBlank
+	private String bairro;
+	@NotBlank
 	private String cidade;
 	@NotBlank
 	private String estado;
