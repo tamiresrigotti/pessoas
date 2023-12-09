@@ -27,9 +27,7 @@ public class PessoaApplicationService implements PessoaService {
 		log.info("[inicia] PessoaApplicationService - criaPessoa");
 		Pessoa pessoa = pessoaRepository.salva(new Pessoa(pessoaRequest));
 		log.info("[finaliza] PessoaApplicationService - criaPessoa");
-		return PessoaResponse.builder()
-				.idPessoa(pessoa.getIdPessoa())
-				.build();
+		return PessoaResponse.builder().idPessoa(pessoa.getIdPessoa()).build();
 	}
 
 	@Override
@@ -43,8 +41,9 @@ public class PessoaApplicationService implements PessoaService {
 	@Override
 	public PessoaDetalhadaResponse buscaPessoaAtravesId(UUID idPessoa) {
 		log.info("[inicia] PessoaApplicationService - buscaPessoaAtravesId");
+		Pessoa pessoa = pessoaRepository.buscaPessoaAtravesId(idPessoa);
 		log.info("[finaliza] PessoaApplicationService - buscaPessoaAtravesId");
-		return null;
+		return new PessoaDetalhadaResponse(pessoa);
 	}
 
 }

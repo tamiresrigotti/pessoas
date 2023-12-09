@@ -22,11 +22,11 @@ public interface PessoaAPI {
 	PessoaResponse postPessoa(@Valid @RequestBody PessoaRequest pessoaRequest);
 	
 	@GetMapping
-	@ResponseStatus (code = HttpStatus.CREATED)
+	@ResponseStatus (code = HttpStatus.OK)
 	List<PessoaListResponse> getTodasPessoas();
 	
 	@GetMapping (value = "/{idPessoa}")
-	@ResponseStatus (code = HttpStatus.CREATED)
+	@ResponseStatus (code = HttpStatus.OK)
 	PessoaDetalhadaResponse getPessoaAtravesId(@PathVariable UUID idPessoa);
 	
 	

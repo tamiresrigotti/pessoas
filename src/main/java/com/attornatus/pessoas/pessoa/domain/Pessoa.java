@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@Document
+@Document(collection = "pessoas")
 public class Pessoa {
 
     @Id
@@ -29,7 +29,6 @@ public class Pessoa {
     @NotNull
     private LocalDate dataDeNascimento;
 
-    @NotNull
     private Endereco endereco;
 
     private LocalDateTime dataHoraDoCadastro;

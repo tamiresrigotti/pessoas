@@ -12,13 +12,11 @@ import lombok.Value;
 @Value
 public class PessoaRequest {
 
-	  @NotBlank
-	    private String nomeCompleto;
+	@NotBlank
+	private String nomeCompleto;
 
-	    @NotNull
-	    private LocalDate dataDeNascimento;
+	@NotNull
+	private LocalDate dataDeNascimento;
 
-	    @NotNull
-	    private Endereco endereco;
+	private Endereco endereco;
 }
- 
