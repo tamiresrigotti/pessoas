@@ -1,6 +1,7 @@
 package com.attornatus.pessoas.pessoa.domain;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -13,7 +14,7 @@ public class Endereco {
 	private String rua;
 	@NotBlank
 	private String numero;
-
+	@NotBlank
 	private String bairro;
 	@NotBlank
 	private String cidade;
@@ -21,8 +22,8 @@ public class Endereco {
 	private String estado;
 	@NotBlank
 	private String cep;
-
-	public Endereco(@NotBlank String rua, @NotBlank String numero, String bairro, @NotBlank String cidade,
+	@NotNull
+	public Endereco(@NotBlank String rua, @NotBlank String numero, @NotBlank String bairro, @NotBlank String cidade,
 			@NotBlank String estado, @NotBlank String cep) {
 
 		this.rua = rua;
