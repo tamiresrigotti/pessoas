@@ -42,4 +42,11 @@ public class PessoaController implements PessoaAPI {
 		return pessoaDetalhada;
 	}
 
+	@Override
+	public void deletaPessoaAtravesId(UUID idPessoa) {
+		log.info("[inicia] PessoaController - deletaPessoaAtravesId");
+		log.info("[idPessoa] {}", idPessoa);
+		log.info("[finaliza] PessoaController - deletaPessoaAtravesId");
+	}
+
 }
