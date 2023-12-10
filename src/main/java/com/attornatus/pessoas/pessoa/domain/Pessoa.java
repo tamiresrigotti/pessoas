@@ -1,4 +1,5 @@
 package com.attornatus.pessoas.pessoa.domain;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.attornatus.pessoas.credencial.application.api.PessoaAlteracaoRequest;
 import com.attornatus.pessoas.credencial.application.api.PessoaRequest;
 
 import lombok.AccessLevel;
@@ -23,26 +25,26 @@ import lombok.NoArgsConstructor;
 @Document(collection = "pessoas")
 public class Pessoa {
 
-    @Id
-    private UUID idPessoa;
+	@Id
+	private UUID idPessoa;
 
-    @NotBlank
-    private String nomeCompleto;
-    
-    @NotBlank
-    @CPF
-    @Indexed(unique = true)
-    private String cpf;
+	@NotBlank
+	private String nomeCompleto;
 
-    @NotNull
-    private LocalDate dataDeNascimento;
+	@NotBlank
+	@CPF
+	@Indexed(unique = true)
+	private String cpf;
 
-    @NotNull
-    @Valid
-    private Endereco endereco;
+	@NotNull
+	private LocalDate dataDeNascimento;
 
-    private LocalDateTime dataHoraDoCadastro;
-    private LocalDateTime dataHoradaUltimaAlteracao;
+	@NotNull
+	@Valid
+	private Endereco endereco;
+
+	private LocalDateTime dataHoraDoCadastro;
+	private LocalDateTime dataHoradaUltimaAlteracao;
 
 	public Pessoa(PessoaRequest pessoaRequest) {
 		this.idPessoa = UUID.randomUUID();
@@ -52,4 +54,13 @@ public class Pessoa {
 		this.endereco = pessoaRequest.getEndereco();
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
+
+	public void altera(PessoaAlteracaoRequest pessoaAlteracaoRequest) {
+		this.idPessoa = UUID.randomUUID();
+		this.nomeCompleto = pessoaAlteracaoRequest.getNomeCompleto();
+		this.dataDeNascimento = pessoaAlteracaoRequest.getDataDeNascimento();
+		this.endereco = pessoaAlteracaoRequest.getEndereco();
+		this.dataHoradaUltimaAlteracao = LocalDateTime.now();
+	}
+
 }
