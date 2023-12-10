@@ -12,4 +12,6 @@ public interface PessoaService {
 	PessoaResponse criaPessoa(PessoaRequest pessoaRequest);
 	List<PessoaListResponse> buscaTodasPessoas();
 	PessoaDetalhadaResponse buscaPessoaAtravesId(UUID idPessoa);
+	void deletaPessoaAtravesId(UUID idPessoa);
 }
+ 

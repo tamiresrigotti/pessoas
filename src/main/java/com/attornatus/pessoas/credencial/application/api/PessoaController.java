@@ -46,6 +46,7 @@ public class PessoaController implements PessoaAPI {
 	public void deletaPessoaAtravesId(UUID idPessoa) {
 		log.info("[inicia] PessoaController - deletaPessoaAtravesId");
 		log.info("[idPessoa] {}", idPessoa);
+		pessoaService.deletaPessoaAtravesId(idPessoa);
 		log.info("[finaliza] PessoaController - deletaPessoaAtravesId");
 	}
 
