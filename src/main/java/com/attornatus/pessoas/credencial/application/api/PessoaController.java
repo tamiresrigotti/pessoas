@@ -3,6 +3,8 @@ package com.attornatus.pessoas.credencial.application.api;
 import java.util.List;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.attornatus.pessoas.credencial.application.service.PessoaService;
@@ -48,6 +50,14 @@ public class PessoaController implements PessoaAPI {
 		log.info("[idPessoa] {}", idPessoa);
 		pessoaService.deletaPessoaAtravesId(idPessoa);
 		log.info("[finaliza] PessoaController - deletaPessoaAtravesId");
+	}
+
+	@Override
+	public void patchAlteraPessoa(UUID idPessoa, @Valid PessoaAlteracaoRequest pessoaAlteracaoRequest) {
+		log.info("[inicia] PessoaController - patchAlteraPessoa");
+		log.info("[idPessoa] {}", idPessoa);
+		log.info("[finaliza] PessoaController - patchAlteraPessoa");
+		
 	}
 
 }
