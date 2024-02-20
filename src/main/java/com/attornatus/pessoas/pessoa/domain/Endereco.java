@@ -1,36 +1,33 @@
 package com.attornatus.pessoas.pessoa.domain;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.attornatus.pessoas.pessoa.application.api.EnderecoRequest;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Document
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Endereco {
-	@NotBlank
-	private String rua;
-	@NotBlank
-	private String numero;
-	@NotBlank
-	private String bairro;
-	@NotBlank
-	private String cidade;
-	@NotBlank
-	private String estado;
-	@NotBlank
-	private String cep;
-	@NotNull
-	public Endereco(@NotBlank String rua, @NotBlank String numero, @NotBlank String bairro, @NotBlank String cidade,
-			@NotBlank String estado, @NotBlank String cep) {
 
-		this.rua = rua;
-		this.numero = numero;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.cep = cep;
+	private String rua;
+	private String numero;
+	private String bairro;
+	private String cidade;
+	private String estado;
+	private String cep;
+
+	public Endereco(EnderecoRequest enderecoRequest) {
+		
+		this.rua = enderecoRequest.getRua();
+		this.numero =  enderecoRequest.getNumero();
+		this.bairro =  enderecoRequest.getBairro();
+		this.cidade =  enderecoRequest.getCidade();
+		this.estado =  enderecoRequest.getEstado();
+		this.cep =  enderecoRequest.getCep();
 	}
+
 }
