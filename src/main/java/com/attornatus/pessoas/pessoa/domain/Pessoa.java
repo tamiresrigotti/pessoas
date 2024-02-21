@@ -4,35 +4,54 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.attornatus.pessoas.pessoa.application.api.PessoaAlteracaoRequest;
+import com.attornatus.pessoas.pessoa.application.api.PessoaRequest;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-@Entity
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Document(collection = "pessoas")
 public class Pessoa {
+
 	@Id
 	private UUID idPessoa;
+
 	@NotBlank
 	private String nomeCompleto;
-	@NotBlank
+
+	@CPF
+	@Indexed(unique = true)
+	private String cpf;
+
+	@NotNull
 	private LocalDate dataDeNascimento;
-	@NotBlank
-	private Endereco endereco;
 
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoradaUltimaAlteracao;
 
-	public Pessoa(@NotBlank String nomeCompleto, @NotBlank LocalDate dataDeNascimento, @NotBlank Endereco endereco) {
+	public Pessoa(PessoaRequest pessoaRequest) {
 		this.idPessoa = UUID.randomUUID();
-		this.nomeCompleto = nomeCompleto;
-		this.dataDeNascimento = dataDeNascimento;
-		this.endereco = endereco;
-		this.dataHoraDoCadastro = LocalDateTime.now();    
+		this.nomeCompleto = pessoaRequest.getNomeCompleto();
+		this.cpf = pessoaRequest.getCpf();
+		this.dataDeNascimento = pessoaRequest.getDataDeNascimento();
+		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
+
+	public void altera(PessoaAlteracaoRequest pessoaAlteracaoRequest) {
+		this.nomeCompleto = pessoaAlteracaoRequest.getNomeCompleto();
+		this.dataDeNascimento = pessoaAlteracaoRequest.getDataDeNascimento();
+		this.dataHoradaUltimaAlteracao = LocalDateTime.now();
+	}
+
 }
