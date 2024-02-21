@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import com.attornatus.pessoas.pessoa.domain.Endereco;
+import com.attornatus.pessoas.enderecos.domain.Endereco;
 import com.attornatus.pessoas.pessoa.domain.Pessoa;
 
 import lombok.Value;

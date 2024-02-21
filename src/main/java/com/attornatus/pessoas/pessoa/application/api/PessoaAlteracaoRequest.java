@@ -5,7 +5,8 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.attornatus.pessoas.pessoa.domain.Endereco;
+import com.attornatus.pessoas.enderecos.application.api.EnderecoRequest;
+import com.attornatus.pessoas.enderecos.domain.Endereco;
 
 import lombok.AccessLevel;
 import lombok.Getter;

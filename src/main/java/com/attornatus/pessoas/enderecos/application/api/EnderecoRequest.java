@@ -1,9 +1,11 @@
-package com.attornatus.pessoas.pessoa.application.api;
+package com.attornatus.pessoas.enderecos.application.api;
+
+import java.util.UUID;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.attornatus.pessoas.pessoa.domain.Endereco;
+import com.attornatus.pessoas.enderecos.domain.Endereco;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,7 +14,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class EnderecoRequest {
-
+	@NotNull
+	private UUID idPessoa;
 	@NotBlank
 	private String rua;
 	@NotBlank
@@ -25,9 +28,8 @@ public class EnderecoRequest {
 	private String estado;
 	@NotBlank
 	private String cep;
-	
-	public EnderecoRequest(Endereco endereco) {
 
+	public EnderecoRequest(Endereco endereco) {
 		this.rua = endereco.getRua();
 		this.numero = endereco.getNumero();
 		this.bairro = endereco.getBairro();

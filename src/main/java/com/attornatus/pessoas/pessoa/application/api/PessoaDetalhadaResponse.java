@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.attornatus.pessoas.pessoa.domain.Endereco;
+import com.attornatus.pessoas.enderecos.domain.Endereco;
 import com.attornatus.pessoas.pessoa.domain.Pessoa;
 
 import lombok.AccessLevel;
